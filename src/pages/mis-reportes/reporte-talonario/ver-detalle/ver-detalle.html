@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-11>
+            <div>
+              Ver detalle talonario
+            </div>
+          </ion-col>
+          <ion-col col-1>
+            <div (click)="salir()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <ion-card>
+      <div class="titleCard">
+        <h2><ion-icon ios="ios-person" md="md-person"></ion-icon> {{ nombreFuncionario }}</h2>
+        <p>Fecha: {{ toDay }}</p>
+      </div>    
+      <ion-card-content>
+
+        <div *ngFor="let item of miLista">
+          <div class="cardOptions">
+            <div class="titleOption">
+              Nro. de talonario: {{ item.numero }}
+            </div>
+            <div class="bodyOption">
+              <ion-item class="no-padding">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 class="no-padding">
+                      Venta actual:
+                    </ion-col>
+                    <ion-col col-6 class="no-padding text-end">
+                      <strong>{{ item.ventas }} Bs</strong>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>                
+              </ion-item>
+              <ion-item class="no-padding">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 class="no-padding">
+                      Tiquets vendidos:
+                    </ion-col>
+                    <ion-col col-6 class="no-padding text-end">
+                      <div>{{ item.ventas }}</div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              <ion-item class="no-padding">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 class="no-padding">
+                      Num. Talonario:
+                    </ion-col>
+                    <ion-col col-6 class="no-padding text-end">
+                      <div>{{ item.inicial}} - {{ item.numero_final }}</div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              <ion-item class="no-padding">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 class="no-padding">
+                      Cant. por vender:
+                    </ion-col>
+                    <ion-col col-6 class="no-padding text-end">
+                      <div class="txtQuindo" [hidden]="(100 - item.ventas) !== 0">
+                        VENDIDO
+                      </div>
+                      <div [hidden]="(100 - item.ventas) === 0">
+                        {{ 100 - item.ventas }}
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              <ion-item class="no-padding">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-12 class="no-padding">
+                      Num. Talonario actuales:
+                    </ion-col>
+                    <ion-col col-12 class="no-padding">
+                      <div class="txtQuindo" [hidden]="(100 - item.ventas) !== 0">
+                        No existen números
+                      </div>
+                      <div [hidden]="(100 - item.ventas) === 0">
+                        {{ item.numero_final - (100 - item.ventas) + 1 }} - {{ item.numero_final }}
+                      </div> 
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>              
+              </ion-item>
+            </div>
+          </div>          
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col col-4>
+            </ion-col>
+            <ion-col col-8>
+              <div class="text-end">
+                Total de venta: <ion-badge color="rosado">{{ suma }} Bs.</ion-badge>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

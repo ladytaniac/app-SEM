@@ -1,0 +1,16 @@
+.buttonCss {
+    .alert-head {
+        background-color: #482778;
+        border-radius: 0px 0px 5px 5px;
+        color: white;
+    }
+    button.alert-button.exit-button{
+        color: white;
+        background-color: #fe9b38;
+    }
+
+    button.alert-button.cancel-button{
+        color: #0d0d0d;
+        background-color: #cfc5df;
+    }
+}

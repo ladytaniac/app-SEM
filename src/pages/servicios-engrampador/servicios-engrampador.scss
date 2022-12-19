@@ -1,0 +1,58 @@
+page-servicios-engrampador {
+    .cardOptions {
+        margin-top: 5px;
+        border-radius: 8px;
+        background-color: white;
+        margin-bottom: 5px;
+        box-shadow: 2px 2px 5px #75777d;
+    }
+    .cardOptions .titleOption {
+        background-color: #6d56a0;
+        color: white;
+        padding: 10px;
+        border-radius: 8px 8px 0px 0px;
+    }
+    .cardOptions .titleOption h3 {
+        margin-top: 8px;
+        margin-bottom: 0px;
+    }
+    .cardOptions .titleOption p {
+        color: #f18721;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+    }
+    .cardOptions .bodyOption {
+        padding: 10px;
+        font-size: 14px;
+    }    
+    .cardOptions .bodyOption ion-icon{
+        font-size: 24px;
+    }
+    .cardOptions .bodyOption .activoHeart {
+        color: #482778;
+    }    
+    .cardOptions .bodyOption img {
+        height: 25px;
+    }
+    .listItems {
+        padding-bottom: 8px;
+    }
+
+    // search
+    /*.searchbar-md .searchbar-input {
+        color: #fbfbfb;
+        background-color: #482778;
+        border: 2px solid #6d56a0;
+        border-radius: 8px;
+    }
+    .searchbar-md .searchbar-search-icon {
+        background-image: url("../../assets/imgs/icons/icon-search.png")!important;
+    }*/
+    .buscador {
+        margin-top: 0px;
+        padding-right: 5px;
+    }
+
+    
+}

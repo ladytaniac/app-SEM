@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    Mis ventas
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <div class="goBack">
+      <button ion-button icon-only clear class="btnAtrasNegro" (click)=goback()>
+        <ion-icon name="ios-arrow-back"></ion-icon> Atras
+      </button>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="cardTramites" (click)="pagoEfectivo()">
+            <img src="assets/imgs/icons/icon-pago-efectivo.png" alt="">
+            <p>Venta comprobante electrónico</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="cardTramites" (click)="pagoBoleto()">
+            <img src="assets/imgs/icons/icon-pago-boleto.png" alt="">
+            <p>Ventas por talonario</p>
+          </div>
+        </ion-col>        
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

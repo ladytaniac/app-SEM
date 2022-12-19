@@ -1,0 +1,35 @@
+<ion-content class="fondoStrongPurple">
+  <div class="goBack">
+    <button ion-button icon-only clear class="btnAtras" (click)=goback()>
+      <ion-icon name="ios-arrow-back"></ion-icon> Atras
+    </button>
+  </div>
+
+  <div class="fondoContenedor">
+    <form #logueoForm="ngForm" novalidate style="width: 80%;">
+      <div class="itemContenedor">
+        <div class="labelWhite">Correo electrónico</div>
+        <ion-input [(ngModel)]="logueo.mail.valor" type="email" required name="mail" #mail="ngModel"></ion-input>
+        <p [hidden]="submitted==false || logueo.mail.validez==''" class="validez">{{logueo.mail.validez}}</p>
+        <p [hidden]="mail.valid || submitted==false" class="validez">* Correo electrónico es requerido</p>
+      </div>
+
+      <div class="itemContenedor">
+        <div class="labelWhite">Contraseña</div>
+        <ion-input  [(ngModel)]="logueo.pass.valor" type="password" required name="pass" #pass="ngModel"></ion-input>
+        <p [hidden]="pass.valid || submitted==false" class="validez">* Contraseña requerida</p>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col  col-1>
+          </ion-col>
+          <ion-col  col-10>
+            <button ion-button round color="yellow" full (click)="ingresar(logueoForm)">Ingresar</button>
+          </ion-col>
+          <ion-col  col-1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

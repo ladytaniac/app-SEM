@@ -1,0 +1,31 @@
+page-reporte-actual {
+    .titleCard {
+        background-color: #482778;
+        margin: 0px;
+        padding: 10px 15px;
+    }
+    .titleCard h2{
+        color: white;
+        text-align: initial;
+        font-size: 17px;
+        font-weight: 500;
+        margin: 0px;
+    }
+    .titleCard p {
+        color: #f18721;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 1px solid #dedede !important;
+    }
+    ion-item {
+        padding-left: 0px !important;
+    }
+    .txt-mitotal {
+        color: #ae1857;
+        font-size: 18px;
+        background-color: #f9b154;
+        padding: 0px 5px;
+        font-weight: 600;
+    }
+}

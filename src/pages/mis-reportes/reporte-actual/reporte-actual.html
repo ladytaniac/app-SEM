@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    Reportes actual
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <div class="goBack">
+      <button ion-button icon-only clear class="btnAtrasNegro" (click)=goback()>
+        <ion-icon name="ios-arrow-back"></ion-icon> Atras
+      </button>
+    </div>
+    <ion-card>
+      <div class="titleCard">
+        <h2>Reporte</h2>
+        <p>Fecha: {{ toDay }}</p>
+      </div>    
+      <ion-card-content>
+        <ion-item class="item-background-color ion-no-padding">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 class="no-padding">
+                Venta comprobante elect.:
+              </ion-col>
+              <ion-col col-6 class="no-padding text-end">
+                <strong> {{ boletaFunc }} Bs</strong>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item class="item-background-color ion-no-padding">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 class="no-padding">
+                Venta por talonario:
+              </ion-col>
+              <ion-col col-6 class="no-padding text-end">
+                <strong>{{ talonarioFunc }} Bs</strong>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item class="item-background-color ion-no-padding">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 class="no-padding">
+                Venta por linea:
+              </ion-col>
+              <ion-col col-6 class="no-padding text-end">
+                <strong>{{ lineaFunc }} Bs</strong>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item class="item-background-color ion-no-padding">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 class="no-padding">
+                Venta por paquimetro:
+              </ion-col>
+              <ion-col col-6 class="no-padding text-end">
+                <strong>{{ parquimetroFunc }} Bs</strong>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="5">
+            </ion-col>
+            <ion-col size="7">
+              <div class="text-end txt-mitotal">
+                Total: {{ totalFunc }} Bs.
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

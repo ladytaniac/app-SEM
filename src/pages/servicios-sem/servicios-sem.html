@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    <img src="assets/imgs/principales/funcionario.png" alt="" />
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <ion-grid>
+      <div *ngIf="tipoFuncionario === 'GRAMPERO'">
+        <ion-row>
+          <ion-col>
+            <div class="cardTramites" (click)="mostrarPlaca()">
+              <img src="assets/imgs/icons/icon-verificar-placa.png" alt="" />
+              <p>Verificar placa</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf="tipoFuncionario === 'TICKEADOR'">
+        <ion-row>
+          <ion-col>
+            <div class="cardTramites" (click)="showPagos()">
+              <img src="assets/imgs/icons/icon-mis-pagos.png" alt="" />
+              <p>Mis ventas</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="cardTramites" (click)="reportes()">
+              <img src="assets/imgs/icons/icon-reportes.png" alt="" />
+              <p>Mis reportes</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="cardTramites" (click)="mostrarParqueos()">
+              <img src="assets/imgs/icons/icon-mis-parqueos.png" alt="" />
+              <p>Mi lista de pagos</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div *ngIf="tipoFuncionario === 'SUPERVISOR'">
+        <ion-row>
+          <ion-col>
+            <div class="cardTramites" (click)="mostrarFuncionarios()">
+              <img
+                src="assets/imgs/icons/icon-reportes-funcionarios.png"
+                alt=""
+              />
+              <p>Mis funcionarios</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+</ion-content>

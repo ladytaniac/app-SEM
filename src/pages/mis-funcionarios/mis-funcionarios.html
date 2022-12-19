@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    Mis funcionarios
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <div class="goBack">
+      <button ion-button icon-only clear class="btnAtrasNegro" (click)=goback()>
+        <ion-icon name="ios-arrow-back"></ion-icon> Atras
+      </button>
+    </div>
+    <form [formGroup]="form" class="spaceCard">
+      <ion-card>
+        <ion-card-content>
+          <h2>Lista de funcionarios</h2>
+          <div class="text-end">
+            Fecha: <div class="txtPink">{{ toDay }}</div>
+          </div>
+          <div class="note-form">Para ver los reportes seleccione un funcionario</div>
+          <ion-item class="no-padding">
+            <ion-label>funcionario</ion-label>
+            <ionic-selectable modalCssClass="ionic-selectable-documentation-configuration" item-content
+              formControlName="funcionario" itemValueField="dni" itemTextField="nombre_completo"
+              closeButtonText="Cancelar" [items]="lstFuncionarios" [canSearch]="true" closeButtonSlot="end"
+              searchPlaceholder="Buscar" (onChange)="datosPagosFuncionario()">
+            </ionic-selectable>
+          </ion-item>
+
+          <div [hidden]="dniFuncionario ===''">
+            <div class="cabecera">
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-8 class="no-padding">
+                    <div class="txtTitulo">Ventas del funcionario</div>
+                    <div class="txtSubTitulo">{{ nombreFuncionario }}</div>
+                  </ion-col>
+                  <ion-col col-4 class="no-padding">
+                    <div class="text-end">
+                      Total: <ion-badge color="pink">{{ total }} Bs.</ion-badge>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+            <ion-searchbar type="text" debounce="500" (ionChange)="getItems($event)" placeholder="Buscar por placa"
+              class="search"></ion-searchbar>
+
+            <ion-list class="no-padding">
+              <div *ngFor="let item of items">
+                <div class="cardOptions">
+                  <div class="titleOption">
+                    <ion-icon name="car-sport"></ion-icon>
+                    {{ item.placa }}
+                  </div>
+                  <div class="bodyOption">
+                    <ion-grid>
+                      <!-- PARQUIMETRO COLON -->
+                      <div *ngIf="nombreFuncionario !== 'PARQUIMETRO COLON'">
+                        <ion-row>
+                          <ion-col col-4 class="no-padding"></ion-col>
+                          <ion-col col-8 class="ion-no-padding parkingStatus">
+                            <strong>Cod. Cuadra: {{item.manzano}}</strong>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <strong>Hora inicio: </strong> {{ item.hora_inicial }}
+                        </ion-col>
+                        <ion-col class="no-padding">
+                          <strong>Hora fin: </strong> {{ item.hora_final }}
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <strong>Monto: </strong>
+                          <div class="txtPink">{{item.monto}} Bs.</div>
+                        </ion-col>
+                        <ion-col class="no-padding">
+                          <strong>Tiempo: </strong>{{item.tiempo}}
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <strong>Pago: </strong>
+                          <div class="txtPurple" [ngStyle]="{'color':getColor(item.pago)}">{{item.pago}}</div>
+                        </ion-col>
+                        <ion-col class="no-padding">
+                          <strong>Registro: </strong>
+                          <div class="txtPurple" [ngStyle]="{'color':getColor(item.tipo_registro)}">
+                            {{item.tipo_registro}}</div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding" *ngIf="item.tipo_registro === 'BOLETA'">
+                          <strong>Nro. de boleta: </strong>
+                          <div class="txtDatoBoleta">{{item.num_boleta}}</div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding"
+                          *ngIf="item.tipo_registro === 'TALONARIO' &&  item.num_talonario !==''">
+                          <strong>Nro. de talonario: </strong>
+                          <div class="txtDatoTalonario">{{item.num_talonario}}</div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </div>
+              </div>
+            </ion-list>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

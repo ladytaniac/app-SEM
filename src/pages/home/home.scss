@@ -1,0 +1,23 @@
+page-home {
+    .contenedor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+    .fondoContenedor img{
+        width: 130px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .fondoContenedor .iconoPrincipal img {
+        width: 230px;
+        margin: 10px 5px 40px 5px;
+    }
+    .fondoStrongPurple .fondoContenedor {
+        text-align: center;
+        display: block;
+    }
+}
+

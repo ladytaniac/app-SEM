@@ -1,0 +1,57 @@
+page-pago-boleto {
+    .cardOptions {
+        margin-top: 5px;
+        border-radius: 8px;
+        background-color: white;
+        margin-bottom: 5px;
+        box-shadow: 2px 2px 5px #75777d;
+    }
+    .cardOptions .titleOption {
+        background-color: #6d56a0;
+        color: white;
+        padding: 5px;
+        border-radius: 8px 8px 0px 0px;
+    }
+    .cardOptions .titleOption p {
+        color: #f18721;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+    }
+    .cardOptions .bodyOption {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .cardOptions .bodyOption ion-icon{
+        font-size: 24px;
+    }
+    .cardOptions .bodyOption .activoHeart {
+        color: #482778;
+    }
+    
+    .cardOptions .bodyOption img {
+        height: 25px;
+    }
+    .textoBadge {
+        font-size: 18px;
+        background: #4ac0df;
+        color: #3c3c3b;
+    }
+    .parkingStatus {
+        background-color: #f9b154;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .listItems {
+        padding-bottom: 10px;
+    }
+    .textFab {
+        text-align: right;
+        margin-top: 5px;
+    }
+    .btnFab {
+        background-color: #2dd36f;
+    }
+}

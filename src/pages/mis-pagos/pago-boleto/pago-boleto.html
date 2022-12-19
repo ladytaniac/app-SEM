@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    Ventas por talonario
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <div class="goBack">
+      <button ion-button icon-only clear class="btnAtrasNegro" (click)=goback()>
+        <ion-icon name="ios-arrow-back"></ion-icon> Atras
+      </button>
+    </div>
+    <h2>Lista de boletas por talonario</h2>
+    <div class="text-end">
+      Fecha: <div class="txtPink">{{ toDay }}</div>
+    </div>
+    <div class="text-end">
+      Venta por impresión: <ion-badge slot="end" class="textoBadge">{{ miVenta }} Bs.</ion-badge>
+    </div>
+
+    <ion-searchbar type="text" debounce="500" (ionChange)="getItems($event)" placeholder="Buscar por placa"
+      class="buscador"></ion-searchbar>
+    <ion-list>
+      <div class="listItems">
+        <div *ngFor="let item of items">
+          <div class="cardOptions">
+            <div class="titleOption">
+              <ion-icon name="car-sport"></ion-icon>
+              {{ item.placa }}
+              <p>Nro. tiquet(s): {{ item.num_talonario }}</p>
+            </div>
+            <div class="bodyOption">
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-5 class="no-padding"></ion-col>
+                  <ion-col col-7 class="no-padding parkingStatus">
+                    <strong>Cod. Cuadra: {{item.manzano}}</strong>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    <strong>Hora inicio: </strong> {{ item.hora_inicial }}
+                  </ion-col>
+                  <ion-col class="no-padding">
+                    <strong>Hora fin: </strong> {{ item.hora_final }}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    <strong>Monto: </strong>
+                    <div class="txtPink">{{item.monto}} Bs.</div>
+                  </ion-col>
+                  <ion-col class="no-padding">
+                    <strong>Tiempo: </strong>{{item.tiempo}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    <strong>Pago: </strong>
+                    <div class="txtPurple">{{item.pago}}</div>
+                  </ion-col>
+                  <ion-col class="no-padding">
+                    <strong>Registro: </strong>
+                    <div class="txtPurple">{{item.tipo_registro}}</div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+  </div>
+  <ion-fab bottom right>
+    <ion-row style="background-color: rgba(255, 255, 255, 0.6);border-radius: 4em;">
+      <ion-col class="textFab">
+        <div color='dark'><b>Nueva boleta</b></div>
+      </ion-col>
+      <ion-col>        
+        <button ion-fab class="btnFab" (click)="newParquing()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-fab>
+</ion-content>

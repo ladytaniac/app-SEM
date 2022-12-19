@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'arciform';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/assets/fonts/Arciform.otf');
+}
+$font-arciform:"arciform";
+
+@font-face {
+    font-family: 'poppins-R';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/assets/fonts/Poppins-Regular.otf');
+}
+$font-poppins-r:"poppins-R";
+
+@font-face {
+    font-family: 'poppins-M';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/assets/fonts/Poppins-Medium.otf');
+}
+$font-poppins-m:"poppins-M";
+
+@font-face {
+    font-family: 'poppins-SB';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/assets/fonts/Poppins-SemiBold.otf');
+}
+$font-poppins-sb:"poppins-SB";
+* {
+    font-family: 'poppins-R';
+}
+
+// Fondo principal
+.fondoStrongPurple {
+    background-color: #5c3989;
+}
+.fondoStrongPurple h1 {
+    color: white;
+}
+.fondoStrongPurple .fondoContenedor {
+    background-image: url("/assets/imgs/principales/fondo-lila.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+}
+.header-color{
+    background-color: #482778;
+    color: white;
+    border-radius: 0px 0px 10px 10px;
+}
+.toolbar-background { 
+    background-color: #482778 !important;
+    color: white !important;
+}
+.toolbar-title {
+    color: white !important;
+}
+ion-navbar.toolbar {
+    padding-top: 30px;
+    border-radius: 0px 0px 8px 8px;
+    padding-bottom: 10px;
+}
+.fondoContenedor h2 {
+    color: #482778;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.btnAmarillo {
+    background-color: #fe9b38;
+    text-transform: capitalize;
+}
+.btnAtras {
+    color: white;
+    text-transform: capitalize;
+}
+.btnAtrasNegro {
+    color: #292929;
+    text-transform: capitalize;
+}
+
+/* Fondo Acceso */
+.fondoStrongWhite {
+    background-color:  #F4F6F9;
+}
+.fondoContenedor {
+    background-image: url("/assets/imgs/principales/argollas2.png");
+    background-color:  #F4F6F9;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding: 10px 15px;
+}
+.cardTramites {
+    text-align: center;
+ }
+ .cardTramites img {
+     border-radius: 28px;
+     border: 2px solid #3c3c3b;
+     padding: 30px;
+     height: 120px;
+ }
+ .cardTramites p {
+     padding: 0px;
+     margin: 0px;
+ }
+ .text-end{
+    text-align: end;
+ }
+ .text-center {
+     text-align: center;
+ }
+ .txtPurple {
+    display: inline;
+    color: #482778;
+    font-weight: 600;
+}
+.txtPink {
+    color: #df547c;
+    display: inline;
+    font-size: 18px;
+    font-weight: 600;
+}
+.buscador {
+    padding: 0px;
+    margin-top: 8px;
+}
+.no-padding {
+    padding: 0px;
+}
+button {
+    text-transform: none !important;
+}
+.iconTooble {
+    display: contents !important;
+}
+.iconTooble ion-icon {
+    color: white !important;
+}
+.spaceCard {
+    padding-bottom: 10px;
+}
+.userAccess {
+    text-align: center;
+    color: #3c3c3b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.userAccess p {
+    margin: 0px;
+    padding: 0px;
+    font-weight: 600;
+}
+.userAccess img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #6d56a0;
+}
+// menu header
+button.back-button.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+    display: none;
+}
+.menu {
+    display: block !important;
+}
+.unidad {
+    color: #482778 !important;
+    font-size: 12px !important;
+}
+ion-header {
+    overflow: hidden;
+}

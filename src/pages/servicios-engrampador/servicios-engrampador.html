@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-navbar text-center color="navBar">
+   <ion-buttons start class="iconTooble">
+    <button class="menu" ion-button menuToggle="leftMenu" icon-only>
+     <ion-icon name="menu"></ion-icon>
+    </button>
+   </ion-buttons>
+   <ion-title class="text-center">
+    Verficar placa
+   </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondoStrongWhite">
+  <div class="fondoContenedor">
+    <div class="goBack">
+      <button ion-button icon-only clear class="btnAtrasNegro" (click)=goback()>
+        <ion-icon name="ios-arrow-back"></ion-icon> Atras
+      </button>
+    </div>    
+    <div class="text-end">
+      Fecha: <div class="txtPink">{{ toDay }}</div>
+    </div>
+    <ion-grid>
+      <form [formGroup]="form">
+        <ion-row>
+          <ion-col col-9 class="no-padding">
+            <ion-searchbar debounce="500" placeholder="Buscar por placa" class="buscador" formControlName='num_placa'></ion-searchbar>
+          </ion-col>
+          <ion-col col-3 class="no-padding">
+            <button ion-button round color="yellow" full (click)="bucarPlaca()">Buscar</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+    <div *ngIf="items.length > 0">
+      <h2>Lista de autos estacionados</h2>
+      <div *ngFor="let item of items">
+        <div class="cardOptions">
+          <div class="titleOption">
+            <h3><ion-icon name="car"></ion-icon>
+            {{ item.placa }}</h3>
+            <p>Cod. sitio: {{ item.codigo_sitio }}</p>
+          </div>
+          <div class="bodyOption">
+            <ion-grid>
+              <div class="text-end">
+                <strong>Tiempo: </strong><ion-badge color="pink"> {{ item.tiempo }}</ion-badge> 
+              </div>               
+              <ion-row>
+                <ion-col class="no-padding">
+                  <strong>Hora inicio: </strong> {{ item.hora_inicial }}
+                </ion-col>
+                <ion-col class="no-padding">
+                  <strong>Hora fin: </strong> {{ item.hora_final }}
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col class="no-padding">
+                  <strong>Tipo de pago: </strong><ion-badge [ngStyle]="{'background-color':getColor(item.pago)}">{{ item.pago }}</ion-badge> 
+                </ion-col>
+                <ion-col class="no-padding">
+                  <div *ngIf="item.num_boleta != ''">
+                    <strong>Nro. boleta: </strong> {{ item.num_boleta }}
+                  </div>
+                  <div *ngIf="item.num_talonario != ''">
+                    <strong>Nro. talonario: </strong> {{ item.num_talonario }}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>         
+        </div>
+      </div>
+
+    </div>
+    
+
+
+    <!-- ion-searchbar type="text" debounce="500" (ionChange)="getItems($event)" placeholder="Buscar por placa" class="buscador"></!-ion-searchbar>
+
+    <ion-list>
+      <div class="listItems">
+        <div *ngFor="let item of items">
+          <div class="cardOptions">
+            <div class="titleOption">
+              <ion-icon name="car"></ion-icon>
+              {{ item.placa }}
+            </div>
+            <div class="bodyOption">
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-9 class="no-padding"></ion-col>
+                  <ion-col col-3 class="no-padding parkingStatus">
+                    <strong>Cod.: {{item.codigo_sitio}}</strong>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    <strong>Hora inicio: </strong> {{ item.hora_inicial }}
+                  </ion-col>
+                  <ion-col class="no-padding">
+                    <strong>Hora fin: </strong> {{ item.hora_final }}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    <strong>Monto: </strong>
+                    <div class="txtPink">{{item.monto}} Bs.</div>
+                  </ion-col>
+                  <ion-col class="no-padding">
+                    <strong>Tiempo: </strong>{{item.tiempo}}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-list -->
+
+  </div>
+</ion-content>

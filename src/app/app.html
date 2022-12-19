@@ -1,0 +1,19 @@
+<ion-menu id="leftMenu" [content]="content" side="left" type="overlay">
+    <ion-content>
+      <div class="userAccess" *ngIf="iniLogin">
+        <img [src]="avatar" alt="" width="170em">
+        <p>{{nombreCompleto}}</p>
+        <p class="unidad">{{unidad}}</p>
+      </div>
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon [name]="p.icon"></ion-icon>
+          {{p.title}}
+        </button>
+        <button menuClose ion-item (click)="logout()">
+            <ion-icon name="exit"></ion-icon>  Cerrar sesión
+        </button> 
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

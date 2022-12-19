@@ -1,0 +1,63 @@
+page-mis-funcionarios {
+    .note-form {
+        color: #706f6f;  
+    }
+    .cabecera {
+        border-radius: 8px 8px 0px 0px;
+        background-color: #482778;
+        color: white;
+        margin: 10px 0px;
+        padding: 8px 5px;
+    }
+    .txtTitulo {
+        font-size: 16px;
+    }
+    .txtSubTitulo {
+        color: #f18721;
+        font-size: 14px;
+    }
+    .txtDatoTalonario {
+        background-color: #4fb9a8;
+        color: white;
+        display: inline;
+        padding: 2px 5px;
+    }
+    .txtDatoBoleta {
+        background-color: #f9b154;
+        color: white;
+        display: inline;
+        padding: 2px 5px;
+    }    
+    .cardOptions {
+        border-radius: 8px;
+        background-color: white;
+        margin-bottom: 7px;
+        box-shadow: 2px 2px 5px #75777d;
+    }
+    .cardOptions .titleOption {
+        background-color: #6d56a0;
+        color: white;
+        padding: 5px;
+        text-align: center;
+        border-radius: 8px 8px 0px 0px;
+    }
+    .cardOptions .bodyOption {
+        padding: 10px;
+        font-size: 14px;
+    }    
+    .cardOptions .bodyOption ion-icon{
+        font-size: 24px;
+    }
+    .cardOptions .bodyOption .activoHeart {
+        color: #482778;
+    }
+    .parkingStatus {
+        background-color: #f9b154;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .search {
+        padding: 5px 0px;
+    }
+}

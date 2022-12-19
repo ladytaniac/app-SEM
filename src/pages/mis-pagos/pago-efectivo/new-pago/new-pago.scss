@@ -1,0 +1,42 @@
+page-new-pago {
+    .titleCard {
+        background-color: #482778;
+        margin: 0px;
+        padding: 10px 15px;
+    }
+    .titleCard h2{
+        color: white;
+        text-align: initial;
+        font-size: 17px;
+        font-weight: 500;
+        margin: 0px;
+    }
+    .titleCard p {
+        color: #f18721;
+    }
+    // body
+    .note-form {
+        margin-top: 5px;
+        color: #7a7a7b;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 1px solid #dedede !important;
+    }
+    ion-item {
+        padding-left: 0px !important;
+    }
+    .lista-matricula p {
+        background-color: #6d56a0 !important;
+        color: white;
+        padding-left: 5px;
+    }
+    input.text-input.text-input-md {
+        text-transform: uppercase;
+    }
+    .txtCuadra {
+        color: #eb8721;
+        font-size: 11px;
+        margin: 0px;
+    }
+}
