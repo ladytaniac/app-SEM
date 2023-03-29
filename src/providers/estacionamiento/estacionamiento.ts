@@ -52,8 +52,8 @@ export class EstacionamientoProvider {
   }
 
   /*Grampero*/
-  public buscarPlaca(placa) {
-    return this.httpClient.get(environment.apiSem + 'sem/get-placa/'+placa, this.httpOptions);
+  public searchPlaca(data:object):Observable<object> {
+    return this.httpClient.post<object>(environment.apiSem + 'sem/search-placa-ciudadano', data, this.httpOptions);
   }
 
   /** Nuevos servicios **/

@@ -13,8 +13,10 @@ import { MensajesProvider } from '../../providers/mensajes/mensajes'
 })
 export class ServiciosEngrampadorPage {
   toDay;
+  placas;
+  showplaca: boolean = false;
+  mensaje: string = '';
   ciFuncionario;
-  items = [];
   tipoFuncionario: string = '';
   private form: FormGroup;
 
@@ -27,11 +29,10 @@ export class ServiciosEngrampadorPage {
     private fbuilder: FormBuilder,
     private msjSrv: MensajesProvider,
   ) {
-    var tzoffset = (new Date()).getTimezoneOffset() * 60000;
-    var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+    this.toDay = localISOTime.split('T')[0];
 
-    var dayEn = localISOTime.split('T')[0];
-    this.toDay= dayEn.split('-')[2]+'-'+dayEn.split('-')[1]+'-'+dayEn.split('-')[0];
     this.ciFuncionario = this.global.sesion['ci'];
   }
   ngOnInit() {
@@ -46,31 +47,23 @@ export class ServiciosEngrampadorPage {
       num_placa: ['', Validators.required],
     });
   }
-  
   bucarPlaca() {
-    if (this.form.valid) {
-      const placa = this.form.get('num_placa').value;
-      let loading = this.loading.create({
-        content: 'Cargando...'
-      });
-      loading.present();
-
-      this.estacionamientoService.buscarPlaca(placa).subscribe(data => {
-        if(data['status'] == true) {
-          this.items = data['response'];
-          loading.dismiss();
-        } else {
-          this.msjSrv.mostrarAlerta('Verificación', data['message']);
-          this.form.reset();
-          this.items = [];
-          loading.dismiss();
-        }
-      })
-    } else {
-      console.log('Falta validar el campo');
-    }
+    const placa = this.form.get('num_placa').value;
+    const myForm = {
+      search: placa,
+      fecha: this.toDay
+    };
+    this.estacionamientoService.searchPlaca(myForm).subscribe(data => {
+      if(Object.keys(data).length > 0) {
+        this.showplaca = true;
+        this.mensaje = '';
+      } else {
+        this.showplaca = false;
+        this.mensaje = 'Lo siento la placa: '+ placa + ' que busco no se encuentra en los registros.';
+      }
+      this.placas = data;
+    });
   }
-
   getColor(value) {
     switch (value) {
       case 'LINEA':
@@ -83,12 +76,9 @@ export class ServiciosEngrampadorPage {
         return 'orange';
       case 'PARQUIMETRO':
         return '#f18721';
-      case ' BOLETA':
+      case 'BOLETA':
         return '#6d56a0';
     }
-  }
-  initializeItems() {
-
   }
   goback() {
     this.navCtrl.push(ServiciosSemPage);

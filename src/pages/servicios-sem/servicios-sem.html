@@ -51,6 +51,13 @@
       <div *ngIf="tipoFuncionario === 'SUPERVISOR'">
         <ion-row>
           <ion-col>
+            <div class="cardTramites" (click)="mostrarPlaca()">
+              <img src="assets/imgs/icons/icon-verificar-placa.png" alt="" />
+              <p>Verificar placa</p>
+            </div>
+          </ion-col>
+
+          <ion-col>
             <div class="cardTramites" (click)="mostrarFuncionarios()">
               <img
                 src="assets/imgs/icons/icon-reportes-funcionarios.png"
@@ -58,7 +65,7 @@
               />
               <p>Mis funcionarios</p>
             </div>
-          </ion-col>
+          </ion-col>      
         </ion-row>
       </div>
     </ion-grid>

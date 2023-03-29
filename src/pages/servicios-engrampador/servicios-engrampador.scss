@@ -1,58 +1,44 @@
 page-servicios-engrampador {
-    .cardOptions {
-        margin-top: 5px;
-        border-radius: 8px;
-        background-color: white;
-        margin-bottom: 5px;
-        box-shadow: 2px 2px 5px #75777d;
+    .txtFecha {
+        color: #ad1e58;
     }
-    .cardOptions .titleOption {
-        background-color: #6d56a0;
-        color: white;
-        padding: 10px;
-        border-radius: 8px 8px 0px 0px;
-    }
-    .cardOptions .titleOption h3 {
-        margin-top: 8px;
-        margin-bottom: 0px;
-    }
-    .cardOptions .titleOption p {
-        color: #f18721;
-        padding: 0px;
-        margin: 0px;
-        font-size: 14px;
-    }
-    .cardOptions .bodyOption {
-        padding: 10px;
-        font-size: 14px;
-    }    
-    .cardOptions .bodyOption ion-icon{
-        font-size: 24px;
-    }
-    .cardOptions .bodyOption .activoHeart {
-        color: #482778;
-    }    
-    .cardOptions .bodyOption img {
-        height: 25px;
-    }
-    .listItems {
-        padding-bottom: 8px;
-    }
-
-    // search
-    /*.searchbar-md .searchbar-input {
-        color: #fbfbfb;
-        background-color: #482778;
-        border: 2px solid #6d56a0;
-        border-radius: 8px;
-    }
-    .searchbar-md .searchbar-search-icon {
-        background-image: url("../../assets/imgs/icons/icon-search.png")!important;
-    }*/
     .buscador {
         margin-top: 0px;
         padding-right: 5px;
     }
-
-    
+    .listaPlacas .titleCard{
+        background: linear-gradient(60deg, #482778, #6d56a0 );
+        padding: 10px;
+        color: #f9b154;
+    }
+    .listaPlacas .titleCard h2 {
+        color: white;
+        font-size: 16px;
+    }
+    .listaPlacas .titleCard p {
+        color: #f18721;
+        font-size: 13px;
+        padding: 0px;
+    }
+    .listaPlacas ion-card-content{
+        font-size: 14px;
+        color: #3c3c3b;
+        padding: 10px 15px;
+    }
+    .listaPlacas ion-button {
+        font-size: 13px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .contMensaje {
+        background-color: white;
+        padding: 10px;
+        box-shadow: 2px 2px 5px #75777d;
+        color: #3f4340;
+    }
+    ion-searchbar {
+        input {
+          border-radius: 30px !important;
+        }
+    }
 }
