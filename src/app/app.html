@@ -4,6 +4,7 @@
         <img [src]="avatar" alt="" width="170em">
         <p>{{nombreCompleto}}</p>
         <p class="unidad">{{unidad}}</p>
+        <ion-badge color="lila">Vers. {{ version }}</ion-badge>
       </div>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">

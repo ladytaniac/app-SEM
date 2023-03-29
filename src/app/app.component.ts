@@ -23,6 +23,7 @@ export class MyApp {
   pages: Array<{title: string, component: any, icon: string}>;
   private httpOptions: object;
   readonly ROOT_URL= environment.apiCloseSession;
+  version = environment.version;
 
   tipoFuncionario;
   private menuSelect: string;

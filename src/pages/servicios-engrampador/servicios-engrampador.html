@@ -44,7 +44,7 @@
                 <h2>Placa {{ item.placa }}</h2>
                 <p>Codigo: {{ item.direccion }}</p>
               </div>
-              <ion-card-content>
+              <ion-card-content>                
                 <ion-row>
                   <ion-col class="no-padding">
                     Hora inicio: <strong>{{ item.hora_inicial }}</strong>
@@ -69,6 +69,11 @@
                       [ngStyle]="{ color: getColor(item.tipo_registro) }"
                       >{{ item.tipo_registro }}</strong
                     >
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="no-padding">
+                    Fecha registro: <ion-badge color="pink">{{ item.fecha_detalle_registro}}</ion-badge>
                   </ion-col>
                 </ion-row>
               </ion-card-content>
