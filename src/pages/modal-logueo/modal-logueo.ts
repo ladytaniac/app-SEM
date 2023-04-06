@@ -89,10 +89,12 @@ export class ModalLogueoPage {
             }
           });
         }, (error: HttpErrorResponse) => {
+          console.log('error=', error);
+          /*
           if (!error.error.success) {
             console.log(error.error.data);
             this.msjSrv.mostrarAlerta(error.error.data, "Correo o contraseña incorrectos");
-          }
+          } */
         });
       }
     }
