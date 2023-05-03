@@ -8,12 +8,11 @@ export const environment = {
     apiDatosFuncionario: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiservdev.cochabamba.bo/api/v1/",
-
+    
     
    
-   
+   /*
     // ** PRODUCCION **
-    /*
     production: false,
     version: "2023.1",
     loginURL:  "https://multiserv.cochabamba.bo/api/v1/auth/sem/login-sem",
@@ -21,6 +20,7 @@ export const environment = {
     apiCloseSession: "https://multiserv.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiserv.cochabamba.bo/api/v1/",
     */
+
     
     // ** Tania **
     /*production: false,

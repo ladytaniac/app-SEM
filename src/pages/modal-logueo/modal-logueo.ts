@@ -61,6 +61,7 @@ export class ModalLogueoPage {
           "password": this.logueo.pass.valor
         }
         this.srvUser.logueoUser(params).subscribe((data:object)=> {
+          console.log('data=', data);
           var accessToken = data["access_token"];
           this.httpOptions = {
             headers: new HttpHeaders({
@@ -70,6 +71,7 @@ export class ModalLogueoPage {
           };
 
           this.httpClient.get(environment.apiDatosFuncionario, this.httpOptions).subscribe(info => {
+            console.log('info=', info);
             if(info['status'] == true) {
               if(info['response'].user.tipo === 'PARQUIMETRO') {
                 this.msjSrv.mostrarAlerta('Verificación', 'Usted no puede acceder a la información, porque tiene el rol de PARQUIMETRO.');
@@ -81,7 +83,9 @@ export class ModalLogueoPage {
                   "id_user": info['response'].user.id_responsable,
                   "nombres": info['response'].user.nombre_completo,
                   "unidad": info['response'].user.unidad,
-                  "tipo_user": info['response'].user.tipo
+                  "tipo_user": info['response'].user.tipo,
+                  "continuo": data["data_gestion"].continuo,
+                  "puede_cobrar": data["data_user"].puede_cobrar,
                 };
                 this.storage.set('sesion', infoFunc);
                 this.viewCtrl.dismiss();
