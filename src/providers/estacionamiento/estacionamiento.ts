@@ -19,9 +19,9 @@ export class EstacionamientoProvider {
   public getTarifarios() {
     return this.httpClient.get(environment.apiSem + 'sem/get-tarifarios', this.httpOptions);
   }
-  public getSitios(cifunc) {
+  /*public getSitios(cifunc) {
     return this.httpClient.get(environment.apiSem + 'sem/get-sitios/'+cifunc, this.httpOptions);
-  }
+  }*/
   public getPrecio(data:object):Observable<object>{
     return this.httpClient.post<object>(environment.apiSem + 'sem/get-price', data, this.httpOptions);
   }

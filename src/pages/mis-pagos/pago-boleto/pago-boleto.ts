@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { EstacionamientoProvider } from '../../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../../providers/global/global';
 import { MisPagosPage } from '../mis-pagos';
-import { NewParkingPage } from './new-parking/new-parking';
+// import { NewParkingPage } from './new-parking/new-parking';
 import { MensajesProvider } from '../../../providers/mensajes/mensajes';
 
 @IonicPage()
@@ -80,7 +80,8 @@ export class PagoBoletoPage {
   goback() {
     this.navCtrl.push(MisPagosPage);
   }
+  /*
   newParquing() {
     this.navCtrl.push(NewParkingPage);
-  }
+  }*/
 }

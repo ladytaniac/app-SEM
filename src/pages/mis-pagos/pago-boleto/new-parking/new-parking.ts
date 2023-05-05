@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { EstacionamientoProvider } from '../../../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../../../providers/global/global';
-import { PagoBoletoPage } from '../pago-boleto';
+// import { PagoBoletoPage } from '../pago-boleto';
 import { MensajesProvider } from '../../../../providers/mensajes/mensajes'
 
 interface DatoReserva {
@@ -286,9 +286,10 @@ export class NewParkingPage {
       this.showDatos = false;
     }    
   }
+  /*
   goback(){
     this.navCtrl.push(PagoBoletoPage);
-  }
+  }*/
   private compareIds(o1: DatoSelect, o2: DatoSelect): boolean {
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
   }

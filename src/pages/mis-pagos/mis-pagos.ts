@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServiciosSemPage } from '../servicios-sem/servicios-sem';
 import { PagoEfectivoPage } from './pago-efectivo/pago-efectivo';
-import { PagoBoletoPage } from './pago-boleto/pago-boleto';
+// import { PagoBoletoPage } from './pago-boleto/pago-boleto';
 
 @IonicPage()
 @Component({
@@ -21,9 +21,9 @@ export class MisPagosPage {
     this.navCtrl.push(ServiciosSemPage);
   }
 
-  pagoBoleto() {
+  /*pagoBoleto() {
     this.navCtrl.push(PagoBoletoPage);
-  }
+  }*/
   pagoEfectivo() {
     this.navCtrl.push(PagoEfectivoPage);
   }

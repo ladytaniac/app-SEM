@@ -4,7 +4,7 @@ import { EstacionamientoProvider } from '../../providers/estacionamiento/estacio
 import { GlobalProvider } from '../../providers/global/global';
 import { InicioAccessPage } from '../inicio-access/inicio-access';
 import { PagoEfectivoPage } from '../mis-pagos/pago-efectivo/pago-efectivo';
-import { PagoBoletoPage } from '../mis-pagos/pago-boleto/pago-boleto';
+// import { PagoBoletoPage } from '../mis-pagos/pago-boleto1/pago-boleto';
 import { ServiciosSemPage } from '../servicios-sem/servicios-sem';
 
 @IonicPage()
@@ -42,9 +42,10 @@ export class MisParqueosPage {
   ventaEfectivos() {
     this.navCtrl.push(PagoEfectivoPage);
   }
+  /*
   ventaTalonario() {
     this.navCtrl.push(PagoBoletoPage);
-  }
+  }*/
 
   initializeItems() {
     this.initializeTickets();

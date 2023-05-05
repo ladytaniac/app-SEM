@@ -83,7 +83,6 @@ export class NewPagoPage {
   ngOnInit() {
     this.formulario();
     this.misTiempos();
-    this.misEspacios();
     this.initializeTickets();
     // this.misManzanos();
     this.misManzanosByUser();
@@ -133,12 +132,6 @@ export class NewPagoPage {
     } else {
       this.micuadra = '';
     }
-  }
-
-  misEspacios() {
-    this.estacionamientoServ.getSitios(this.ciFuncionario).subscribe(data => {
-      this.espacios = data['response'];
-    });
   }
   misTiempos() {
     this.estacionamientoServ.getTarifarios().subscribe(data => {
@@ -203,8 +196,10 @@ export class NewPagoPage {
       const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
       const myForm = {
         cod_manzano: idManz,
-        id_tarifario: idTiempo
+        id_tarifario: idTiempo,
+        placa: placa
       };
+      console.log('myForm1=', myForm);
       this.estacionamientoServ.getPriceManazano(myForm).subscribe(data => {
         var motoSelect = data['total_bs'];
         this.form.get('monto').setValue(motoSelect);
@@ -288,9 +283,12 @@ export class NewPagoPage {
       const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
       const myForm = {
         cod_manzano: idManz,
-        id_tarifario: idTiempo
+        id_tarifario: idTiempo,
+        placa: placa
       };
+      console.log('myForm2=', myForm);
       this.estacionamientoServ.getPriceManazano(myForm).subscribe(data => {
+        console.log('data=', data);
         var motoSelect = data['total_bs'];
         this.form.get('monto').setValue(motoSelect);
         this.miPago = motoSelect + ' Bs.';

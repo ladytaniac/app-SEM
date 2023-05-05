@@ -20,10 +20,10 @@ import { MisPagosPage } from '../pages/mis-pagos/mis-pagos';
 import { MensajesProvider } from '../providers/mensajes/mensajes';
 import { ServUserProvider } from '../providers/serv-user/serv-user';
 import { GlobalProvider } from '../providers/global/global';
-import { PagoBoletoPage } from '../pages/mis-pagos/pago-boleto/pago-boleto';
+// import { PagoBoletoPage } from '../pages/mis-pagos/pago-boleto/pago-boleto';
 import { PagoEfectivoPage } from '../pages/mis-pagos/pago-efectivo/pago-efectivo';
 import { NewPagoPage } from '../pages/mis-pagos/pago-efectivo/new-pago/new-pago';
-import { NewParkingPage } from '../pages/mis-pagos/pago-boleto/new-parking/new-parking';
+// import { NewParkingPage } from '../pages/mis-pagos/pago-boleto1/new-parking/new-parking';
 import { EstacionamientoProvider } from '../providers/estacionamiento/estacionamiento';
 import { MisReportesPage } from '../pages/mis-reportes/mis-reportes';
 import { ReporteActualPage } from '../pages/mis-reportes/reporte-actual/reporte-actual';
@@ -41,10 +41,10 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     InicioAccessPage,
     ServiciosSemPage,
     MisPagosPage,
-    PagoBoletoPage,
+    // PagoBoletoPage,
     PagoEfectivoPage,
     NewPagoPage,
-    NewParkingPage,
+    // NewParkingPage,
     ModalLogueoPage,
     MisReportesPage,
     ReporteActualPage,
@@ -70,10 +70,10 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     HomePage,
     InicioAccessPage,
     MisPagosPage,
-    PagoBoletoPage,
+    // PagoBoletoPage,
     PagoEfectivoPage,
     NewPagoPage,
-    NewParkingPage,
+    // NewParkingPage,
     ServiciosSemPage,
     ModalLogueoPage,
     MisReportesPage,
