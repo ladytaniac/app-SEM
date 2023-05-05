@@ -73,7 +73,7 @@ export class NewPagoPage {
     private http: HttpClient
   ) {
     this.pagado = false;
-    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000;
     var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
     this.toDay = localISOTime.split('T')[0];
     this.ciFuncionario = this.global.sesion['ci'];
@@ -84,7 +84,6 @@ export class NewPagoPage {
     this.formulario();
     this.misTiempos();
     this.initializeTickets();
-    // this.misManzanos();
     this.misManzanosByUser();
   }
 
@@ -94,7 +93,6 @@ export class NewPagoPage {
   formulario() {
     this.form = this.fbuilder.group({
       cod_manzano: ['', Validators.required],
-      // cod_espacio: ['', Validators.required],
       tiempo_select: ['', Validators.required],
       placa: ['', Validators.required],
       monto: ['', Validators.required],
@@ -103,22 +101,11 @@ export class NewPagoPage {
       t_alargue: ['']
     });
   }
-
-  /*misManzanos() {
-    this.estacionamientoServ.getManzanos().subscribe(data => {
-      console.log(data);
-      if(data['status'] == true) {
-        this.manzanos = data['response'];
-      }
-    })
-  }*/
-
   misManzanosByUser() {
     const myForm = {
       id_responsable: this.idUser,
     };
     this.estacionamientoServ.getManzanosUser(myForm).subscribe(data => {
-      // console.log('datossss=', data);
       if(data['status'] == true) {
         this.manzanos = data['response'];
       }
@@ -154,34 +141,18 @@ export class NewPagoPage {
       this.resultsAvailable = false;
       this.showDatos = false;
     } else {
-      this.estacionamientoServ.listEstacionamiento(value).subscribe(data => {
-        this.items = data;
-        if (this.items.length > 0) {
-          this.resultsAvailable = true;
-          this.showDatos = true;
-          this.datosComplementarios();
-        }
-      });
+      if(value.length > 3) {
+        this.estacionamientoServ.listEstacionamiento(value).subscribe(data => {
+          this.items = data;
+          if (this.items.length > 0) {
+            this.resultsAvailable = true;
+            this.showDatos = true;
+            this.datosComplementarios();
+          }
+        });
+      }
     }
   }
-  
-  /*changeInput2($event) {
-    const value = $event.value;
-    if (value.length <= 0) {
-      this.items = [];
-      this.resultsAvailable = false;
-      this.showDatos = false;
-    } else {
-      this.estacionamientoServ.listEstacionamiento(value).subscribe(data => {
-        this.items = data;
-        if (this.items.length > 0) {
-          this.resultsAvailable = true;
-          this.showDatos = true;
-          this.datosComplementarios();
-        }
-      });
-    }
-  }*/
   selected(item) {
     this.form.get('placa').setValue(item.placa);
     this.items = [];
@@ -192,14 +163,12 @@ export class NewPagoPage {
 
     if (codManzano !== null && tiempoSelect !== '' && placa !== '') {
       this.showDatos = true;
-      const idManz = this.form.get('cod_manzano').value.id_manzano;
       const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
       const myForm = {
-        cod_manzano: idManz,
+        cod_manzano: codManzano,
         id_tarifario: idTiempo,
         placa: placa
       };
-      console.log('myForm1=', myForm);
       this.estacionamientoServ.getPriceManazano(myForm).subscribe(data => {
         var motoSelect = data['total_bs'];
         this.form.get('monto').setValue(motoSelect);
@@ -218,43 +187,6 @@ export class NewPagoPage {
       this.showDatos = false;
     }
   }
-  /*selected2(item) {
-    this.form.get('placa').setValue(item.placa);
-    this.items = [];
-    this.resultsAvailable = false;
-
-    const codEspacio = this.form.get('cod_espacio').value;
-    const tiempoSelect = this.form.get('tiempo_select').value;
-    const placa = this.form.get('placa').value;
-
-    if (codEspacio !== null && tiempoSelect !== '' && placa !== '') {
-      this.showDatos = true;
-      const idSitio = this.form.get('cod_espacio').value.id_sitio;
-      const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
-      const myForm = {
-        id_sitio: idSitio,
-        id_tarifario: idTiempo,
-        placa: placa
-      };
-      
-      this.estacionamientoServ.getPrecio(myForm).subscribe(data => {
-        var motoSelect = data['total_bs'];
-        this.form.get('monto').setValue(motoSelect);
-        this.miPago = motoSelect + ' Bs.';
-        this.form.get('hr_inicio').setValue(data['hora_inicio']);
-        this.form.get('hr_fin').setValue(data['hora_fin']);
-        if(data['extencion'] != null) {
-          this.showTimeExt = true;
-          this.form.get('t_alargue').setValue(data['extencion']);
-        } else {
-          this.showTimeExt = false;
-          this.form.get('t_alargue').setValue('');
-        }
-      });      
-    } else {
-      this.showDatos = false;
-    }
-  }*/
   private buscarTexto(event){
     const buscar= event.value;
     if(buscar !== ''){
@@ -263,14 +195,7 @@ export class NewPagoPage {
       this.showDatos = false;
     }
   }
-  /*private buscarTexto2(event){
-    const buscar= event.value;
-    if(buscar !== ''){
-      this.datosComplementarios();
-    } else {
-      this.showDatos = false;
-    }
-  }*/
+
   datosComplementarios() {
     const codManzano = this.form.get('cod_manzano').value;
     const tiempoSelect = this.form.get('tiempo_select').value;
@@ -278,7 +203,6 @@ export class NewPagoPage {
 
     if (codManzano !== null && tiempoSelect !== '' && placa !== '') {
       this.showDatos = true;
-      // const idManz = this.form.get('cod_manzano').value.id_manzano;
       const idManz = this.form.get('cod_manzano').value
       const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
       const myForm = {
@@ -286,9 +210,7 @@ export class NewPagoPage {
         id_tarifario: idTiempo,
         placa: placa
       };
-      console.log('myForm2=', myForm);
       this.estacionamientoServ.getPriceManazano(myForm).subscribe(data => {
-        console.log('data=', data);
         var motoSelect = data['total_bs'];
         this.form.get('monto').setValue(motoSelect);
         this.miPago = motoSelect + ' Bs.';
@@ -310,7 +232,6 @@ export class NewPagoPage {
     if (this.form.valid) {
       const myForm = {
         id_tarifario: this.form.get('tiempo_select').value.id_tarifario,
-        // codigo_manzano: this.form.get('cod_manzano').value.id_manzano,
         codigo_manzano: this.form.get('cod_manzano').value,
         placa: this.form.get('placa').value,
         ci_usuario: this.ciFuncionario
@@ -337,8 +258,6 @@ export class NewPagoPage {
             numBoleta: data["response"].num_boleta,
             t_extendido: this.form.get('t_alargue').value
           };
-          console.log('datos a imprimir=', this.objImprimir);
-          console.log('recupe impri=', this.objImprimir.numBoleta);
           this.micuadra = '';
         }
         this.micuadra = '';
@@ -354,55 +273,6 @@ export class NewPagoPage {
       })
     }
   }
-
-
-
-  generarPago2() {
-    if (this.form.valid) {
-      const myForm = {
-        id_sitio: this.form.get('cod_espacio').value.id_sitio,
-        id_tarifario: this.form.get('tiempo_select').value.id_tarifario,
-        placa: this.form.get('placa').value,
-        ci_usuario: this.ciFuncionario
-      };
-      let loading = this.loading.create({
-        content: 'Cargando...'
-      });
-      loading.present();
-      
-      this.estacionamientoServ.saveParking(myForm).subscribe(data => {
-        if (data['status'] === false) {
-          this.msjSrv.mostrarAlerta('Verificación', 'Usted no puede realizar esta transacción. '+ data['status'].message);
-          loading.dismiss();
-        } else {
-          this.msjSrv.mostrarAlerta('Confirmación', 'Su pago se realizado satisfactoriamente.');
-          var hinicio = data["response"].hora_inicial.split(':')[0] + ':' + data["response"].hora_inicial.split(':')[1];
-          var hfin = data["response"].hora_final.split(':')[0] + ':' + data["response"].hora_final.split(':')[1];
-
-          this.objImprimir = {
-            nameFunc: this.global.sesion["nombres"],
-            placa: this.form.get('placa').value,
-            codReser: this.form.get('cod_espacio').value.codigo_sitio,
-            costo: data["response"].monto,
-            hraReser: hinicio + ' - ' + hfin,
-            fecha: this.toDay,
-            numBoleta: data["response"].num_boleta,
-            t_extendido: this.form.get('t_alargue').value
-          };
-          console.log('datos a imprimir=', this.objImprimir);
-          console.log('recupe impri=', this.objImprimir.numBoleta);
-        }
-        this.form.reset();
-          this.miPago = '';
-          this.micuadra = '';
-          loading.dismiss();
-      }, (error) => {
-        console.log(error.error);
-        this.msjSrv.mostrarAlerta('Verificación', 'Usted no esta autentificado.');
-        loading.dismiss();
-      });
-    } 
-  }
   /** Impresora **/
   discover() {
     this.zebraPrinter.discover().then(result => {
@@ -411,7 +281,6 @@ export class NewPagoPage {
       console.log(result);
     }).catch(err => {
       console.log(err);
-
     });
   }
 
@@ -420,7 +289,6 @@ export class NewPagoPage {
       console.log("connceting:" + result);
     }).catch(err => {
       console.log(err);
-
     })
   }
 
