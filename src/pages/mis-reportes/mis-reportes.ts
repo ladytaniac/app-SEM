@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServiciosSemPage } from '../servicios-sem/servicios-sem';
-import { ReporteTalonarioPage } from './reporte-talonario/reporte-talonario';
+// import { ReporteTalonarioPage } from './reporte-talonario/reporte-talonario';
 import { ReporteActualPage } from './reporte-actual/reporte-actual';
 
 @IonicPage()
@@ -20,9 +20,6 @@ export class MisReportesPage {
   }
   reporteHoy() {
     this.navCtrl.push(ReporteActualPage);
-  }
-  reporteTalonario() {
-    this.navCtrl.push(ReporteTalonarioPage);
   }
 
 }

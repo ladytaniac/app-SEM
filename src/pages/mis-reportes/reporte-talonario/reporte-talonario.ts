@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { EstacionamientoProvider } from '../../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../../providers/global/global';
-import { VerDetallePage } from './ver-detalle/ver-detalle';
+// import { VerDetallePage } from './ver-detalle/ver-detalle';
 import { MisReportesPage } from '../mis-reportes';
 
 @IonicPage()
@@ -89,10 +89,11 @@ export class ReporteTalonarioPage {
         }
     };
   }
+  /*
   verDetalle() {
     let modal = this.modalCtrl.create(VerDetallePage, { ltsTalonarios: this.misTalonarios });
     modal.present();
-  }
+  }*/
 
   goback(){
     this.navCtrl.push(MisReportesPage);

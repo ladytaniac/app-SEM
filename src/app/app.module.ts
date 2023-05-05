@@ -28,8 +28,8 @@ import { EstacionamientoProvider } from '../providers/estacionamiento/estacionam
 import { MisReportesPage } from '../pages/mis-reportes/mis-reportes';
 import { ReporteActualPage } from '../pages/mis-reportes/reporte-actual/reporte-actual';
 import { ReporteFechaPage } from '../pages/mis-reportes/reporte-fecha/reporte-fecha';
-import { ReporteTalonarioPage } from '../pages/mis-reportes/reporte-talonario/reporte-talonario';
-import { VerDetallePage } from '../pages/mis-reportes/reporte-talonario/ver-detalle/ver-detalle';
+// import { ReporteTalonarioPage } from '../pages/mis-reportes/reporte-talonario/reporte-talonario';
+// import { VerDetallePage } from '../pages/mis-reportes/reporte-talonario/ver-detalle/ver-detalle';
 import { MisParqueosPage } from '../pages/mis-parqueos/mis-parqueos';
 import { MisFuncionariosPage } from '../pages/mis-funcionarios/mis-funcionarios';
 import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servicios-engrampador';
@@ -49,8 +49,8 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     MisReportesPage,
     ReporteActualPage,
     ReporteFechaPage,
-    ReporteTalonarioPage,
-    VerDetallePage,
+    // ReporteTalonarioPage,
+    // VerDetallePage,
     MisParqueosPage,
     MisFuncionariosPage,
     ServiciosEngrampadorPage
@@ -79,8 +79,8 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     MisReportesPage,
     ReporteActualPage,
     ReporteFechaPage,
-    ReporteTalonarioPage,
-    VerDetallePage,
+    // ReporteTalonarioPage,
+    // VerDetallePage,
     MisParqueosPage,
     MisFuncionariosPage,
     ServiciosEngrampadorPage

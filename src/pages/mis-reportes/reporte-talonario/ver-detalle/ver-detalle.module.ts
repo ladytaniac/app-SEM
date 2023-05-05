@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { VerDetallePage } from './ver-detalle';
+// import { VerDetallePage } from './ver-detalle';
 
 @NgModule({
   declarations: [
-    VerDetallePage,
+    // VerDetallePage,
   ],
   imports: [
-    IonicPageModule.forChild(VerDetallePage),
+    // IonicPageModule.forChild(VerDetallePage),
   ],
 })
 export class VerDetallePageModule {}
