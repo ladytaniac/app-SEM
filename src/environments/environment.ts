@@ -2,7 +2,7 @@ export const environment = {
     
     // *** DESARROLLO **
     production: false,
-    version: "2023.2-DEV",
+    version: "2023.3-DEV",
     loginURL:  "https://multiservdev.cochabamba.bo/api/v1/auth/sem/login-sem",
     apiDatosFuncionario: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/logout-sem",
@@ -10,7 +10,7 @@ export const environment = {
           
     // ** PRODUCCION **
     /* production: false,
-    version: "2023.2",
+    version: "2023.3",
     loginURL:  "https://multiserv.cochabamba.bo/api/v1/auth/sem/login-sem",
     apiDatosFuncionario: "https://multiserv.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiserv.cochabamba.bo/api/v1/auth/sem/logout-sem",

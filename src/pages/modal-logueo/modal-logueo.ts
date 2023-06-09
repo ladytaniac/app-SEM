@@ -93,7 +93,13 @@ export class ModalLogueoPage {
             }
           });
         }, (error: HttpErrorResponse) => {
-          console.log('error=', error);
+          if (error.status === 500) {
+            console.log('Error 500');
+            this.msjSrv.mostrarAlerta('Error de acceso', "Correo o contraseña incorrectos");
+          } else {
+            console.log('error=', error);
+            this.msjSrv.mostrarAlerta('Error de acceso', "Acceso no autorizado");
+          }
           /*
           if (!error.error.success) {
             console.log(error.error.data);
@@ -106,5 +112,4 @@ export class ModalLogueoPage {
   goback() {
     this.navCtrl.push(InicioAccessPage);
   }
-
 }
