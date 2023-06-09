@@ -7,6 +7,7 @@ export const environment = {
     apiDatosFuncionario: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiservdev.cochabamba.bo/api/v1/",
+    apiHabilitarPago: "http://192.168.220.117:8006/api/v1/sem/verificar-cobro-habilitado",
           
     // ** PRODUCCION **
     /* production: false,

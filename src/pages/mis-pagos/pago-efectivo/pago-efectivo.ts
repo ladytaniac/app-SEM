@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { EstacionamientoProvider } from '../../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../../providers/global/global';
+import { MensajesProvider } from '../../../providers/mensajes/mensajes';
 import { MisPagosPage } from '../mis-pagos';
 import { NewPagoPage } from './new-pago/new-pago';
 
@@ -14,6 +15,7 @@ export class PagoEfectivoPage {
   boletas;
   searchTerm: string = '';
   ciFuncionario;
+  idFuncionario;
   myDate: string = new Date().toISOString();
   toDay;
   items = [];
@@ -28,11 +30,13 @@ export class PagoEfectivoPage {
     private estacionamientoService: EstacionamientoProvider,
     private global: GlobalProvider,
     private loading: LoadingController,
+    private msjSrv: MensajesProvider,
   ) {
     var tzoffset = (new Date()).getTimezoneOffset() * 60000;
     var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
     this.toDay = localISOTime.split('T')[0];
     this.ciFuncionario = this.global.sesion['ci'];
+    this.idFuncionario = this.global.sesion['id_user'];
   }
   ngOnInit() {
     this.initializeTickets();
@@ -72,9 +76,20 @@ export class PagoEfectivoPage {
     }
   }
   goback() {
+    
     this.navCtrl.push(MisPagosPage);
   }
   newParquing() {
-    this.navCtrl.push(NewPagoPage);
+    const myForm = {
+      id_responsable: this.idFuncionario,
+    };
+    this.estacionamientoService.habilitadoCobro(myForm).subscribe(data => {
+      console.log('data pagos=', data);
+      if(data['status'] == true) {
+        this.navCtrl.push(NewPagoPage);
+      } else {
+        this.msjSrv.mostrarAlerta('Verificación', data['message']);
+      }
+    });
   }
 }
