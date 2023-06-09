@@ -22,9 +22,9 @@ export class EstacionamientoProvider {
   /*public getSitios(cifunc) {
     return this.httpClient.get(environment.apiSem + 'sem/get-sitios/'+cifunc, this.httpOptions);
   }*/
-  public getPrecio(data:object):Observable<object>{
+  /*public getPrecio(data:object):Observable<object>{
     return this.httpClient.post<object>(environment.apiSem + 'sem/get-price', data, this.httpOptions);
-  }
+  }*/
   public saveParking(data:object):Observable<object>{
     return this.httpClient.post<object>(environment.apiSem + 'sem/register-rent', data, this.httpOptions);
   }
