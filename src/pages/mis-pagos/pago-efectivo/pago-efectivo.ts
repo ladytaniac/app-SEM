@@ -84,7 +84,7 @@ export class PagoEfectivoPage {
       id_responsable: this.idFuncionario,
     };
     this.estacionamientoService.habilitadoCobro(myForm).subscribe(data => {
-      console.log('data pagos=', data);
+      // console.log('data pagos=', data);
       if(data['status'] == true) {
         this.navCtrl.push(NewPagoPage);
       } else {
