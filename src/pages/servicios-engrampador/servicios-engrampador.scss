@@ -36,6 +36,14 @@ page-servicios-engrampador {
         box-shadow: 2px 2px 5px #75777d;
         color: #3f4340;
     }
+    ion-input {
+        background-color: white;
+        border-radius: 40px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        input {
+            margin: 8px 8px !important;
+        }
+    }
     ion-searchbar {
         input {
           border-radius: 30px !important;

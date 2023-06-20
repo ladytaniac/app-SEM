@@ -94,7 +94,7 @@ export class NewPagoPage {
     this.form = this.fbuilder.group({
       cod_manzano: ['', Validators.required],
       tiempo_select: ['', Validators.required],
-      placa: ['', Validators.required],
+      placa: ['',  [Validators.required, Validators.minLength(5), Validators.min(5)]],
       monto: ['', Validators.required],
       hr_inicio: ['', Validators.required],
       hr_fin: ['', Validators.required],
@@ -134,6 +134,61 @@ export class NewPagoPage {
       this.boletas = data;
     });
   }
+  searchPlaca() {
+    const busqueda = this.form.get('placa').value;
+    const codManzano = this.form.get('cod_manzano').value;
+    const tiempoSelect = this.form.get('tiempo_select').value;
+
+    if(busqueda != '') {
+      console.log('buscar=', busqueda);
+      this.estacionamientoServ.listEstacionamiento(busqueda).subscribe(data => {
+        console.log('data=', data);
+        this.items = data;
+        if (this.items.length > 0) {
+          this.resultsAvailable = true;
+          this.showDatos = true;
+          this.datosComplementarios();
+        } else {
+          if(busqueda.length > 4) {
+            console.log('tengo 4 datos');
+
+            if (codManzano !== null && tiempoSelect !== '' && busqueda !== '') {
+              this.showDatos = true;
+              const idTiempo = this.form.get('tiempo_select').value.id_tarifario;
+              const myForm = {
+                cod_manzano: codManzano,
+                id_tarifario: idTiempo,
+                placa: busqueda
+              };
+              this.estacionamientoServ.getPriceManazano(myForm).subscribe(data => {
+                var motoSelect = data['total_bs'];
+                this.form.get('monto').setValue(motoSelect);
+                this.miPago = motoSelect + ' Bs.';
+                this.form.get('hr_inicio').setValue(data['hora_inicio']);
+                this.form.get('hr_fin').setValue(data['hora_fin']);
+                if(data['extencion'] != null) {
+                  this.showTimeExt = true;
+                  this.form.get('t_alargue').setValue(data['extencion']);
+                } else {
+                  this.showTimeExt = false;
+                  this.form.get('t_alargue').setValue('');
+                }
+              })
+            }else {
+              this.showDatos = false;
+            }
+          } else {
+            this.showDatos = false;
+            this.form.get('monto').setValue('');
+            this.form.get('hr_inicio').setValue(data['']);
+            this.form.get('hr_fin').setValue(data['']);
+          }
+        }
+
+      });
+    }
+  }
+
   changeInput($event) {
     const value = $event.value;
     if (value.length <= 0) {

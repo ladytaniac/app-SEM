@@ -25,8 +25,16 @@
         <ion-row>
           <ion-col col-12 class="no-padding">
             <p>Ingrese el número de su placa.</p>
-            <ion-searchbar formControlName="num_placa" class="no-padding buscador" placeholder="Intruzca una placa" (ionChange)="bucarPlaca()">
-            </ion-searchbar>
+            <form [formGroup]="form">
+              <ion-row>
+                <ion-col col-9>
+                  <ion-input type="text" class="form-controll" formControlName="num_placa"></ion-input>
+                </ion-col>
+                <ion-col col-3 class="no-padding">
+                  <button ion-button round color="yellow" full (click)="bucarPlaca()" [disabled]="!form.valid">Buscar</button>
+                </ion-col>
+              </ion-row>
+            </form>
           </ion-col>
         </ion-row>
       </form>

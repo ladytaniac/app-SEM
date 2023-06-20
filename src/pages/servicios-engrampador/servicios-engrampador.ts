@@ -48,6 +48,7 @@ export class ServiciosEngrampadorPage {
     });
   }
   bucarPlaca() {
+    console.log('Holas');
     const placa = this.form.get('num_placa').value;
     const myForm = {
       search: placa,

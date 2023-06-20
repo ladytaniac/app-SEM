@@ -1,21 +1,22 @@
 export const environment = {
     
     // *** DESARROLLO **
-    /* production: false,
+    production: false,
     version: "2023.3-DEV",
     loginURL:  "https://multiservdev.cochabamba.bo/api/v1/auth/sem/login-sem",
     apiDatosFuncionario: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiservdev.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiservdev.cochabamba.bo/api/v1/",
-    apiHabilitarPago: "http://192.168.220.117:8006/api/v1/sem/verificar-cobro-habilitado",*/
+    apiHabilitarPago: "https://multiservdev.cochabamba.bo/api/v1/sem/verificar-cobro-habilitado",
           
     // ** PRODUCCION **
-    production: false,
+    /*production: false,
     version: "2023.3",
     loginURL:  "https://multiserv.cochabamba.bo/api/v1/auth/sem/login-sem",
     apiDatosFuncionario: "https://multiserv.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiserv.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiserv.cochabamba.bo/api/v1/",
+    */
         
     // ** Tania **
     /*production: false,
