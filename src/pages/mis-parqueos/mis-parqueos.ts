@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstacionamientoProvider } from '../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../providers/global/global';
 import { InicioAccessPage } from '../inicio-access/inicio-access';
@@ -12,6 +13,7 @@ import { ServiciosSemPage } from '../servicios-sem/servicios-sem';
   templateUrl: 'mis-parqueos.html',
 })
 export class MisParqueosPage {
+  private form: FormGroup;
   boletas;
   searchTerm: string = '';
   ciFuncionario;
@@ -27,6 +29,7 @@ export class MisParqueosPage {
     private estacionamientoService: EstacionamientoProvider,
     private global: GlobalProvider,
     private loading: LoadingController,
+    private fbuilder: FormBuilder,
   ) {
     var tzoffset = (new Date()).getTimezoneOffset() * 60000;
     var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
@@ -35,11 +38,18 @@ export class MisParqueosPage {
   }
   ngOnInit() {
     this.initializeTickets();
+    this.formulario();
   }
   ionViewDidLoad() {
   }
   ventaEfectivos() {
     this.navCtrl.push(PagoEfectivoPage);
+  }
+
+  formulario() {
+    this.form = this.fbuilder.group({
+      num_placa: ['', Validators.required],
+    });
   }
 
   initializeItems() {
@@ -96,5 +106,5 @@ export class MisParqueosPage {
   goback() {
     this.navCtrl.push(ServiciosSemPage);
   }
-
+  get num_placa() { return this.form.get('num_placa'); }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstacionamientoProvider } from '../../../providers/estacionamiento/estacionamiento';
 import { GlobalProvider } from '../../../providers/global/global';
 import { MensajesProvider } from '../../../providers/mensajes/mensajes';
@@ -12,6 +13,7 @@ import { NewPagoPage } from './new-pago/new-pago';
   templateUrl: 'pago-efectivo.html',
 })
 export class PagoEfectivoPage {
+  private form: FormGroup;
   boletas;
   searchTerm: string = '';
   ciFuncionario;
@@ -31,6 +33,7 @@ export class PagoEfectivoPage {
     private global: GlobalProvider,
     private loading: LoadingController,
     private msjSrv: MensajesProvider,
+    private fbuilder: FormBuilder,
   ) {
     var tzoffset = (new Date()).getTimezoneOffset() * 60000;
     var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
@@ -40,10 +43,16 @@ export class PagoEfectivoPage {
   }
   ngOnInit() {
     this.initializeTickets();
+    this.formulario();
   }
 
   ionViewDidLoad() {
     this.initializeTickets();
+  }
+  formulario() {
+    this.form = this.fbuilder.group({
+      num_placa: ['', [Validators.required, Validators.minLength(5)]],
+    });
   }
   initializeTickets() {
     const myForm = {
@@ -75,6 +84,36 @@ export class PagoEfectivoPage {
       this.initializeTickets();
     }
   }
+  bucarPlaca() {
+    const placa = this.form.get('num_placa').value;
+    let itemsAux = this.items;
+    if (placa && placa.trim() !== '') {
+      itemsAux = itemsAux.filter((item) => {
+        return (item.placa.toLowerCase().indexOf(placa.toLowerCase()) > -1);
+      });
+      this.items = itemsAux;
+    } else {
+      this.initializeTickets();
+    }
+  }
+
+  /*bucarPlaca2() {
+    const placa = this.form.get('num_placa').value;
+    const myForm = {
+      search: placa,
+      fecha: this.toDay
+    };
+    this.estacionamientoService.searchPlaca(myForm).subscribe(data => {
+      if(Object.keys(data).length > 0) {
+        this.showplaca = true;
+        this.mensaje = '';
+      } else {
+        this.showplaca = false;
+        this.mensaje = 'Lo siento la placa: '+ placa + ' que busco no se encuentra en los registros.';
+      }
+      this.placas = data;
+    });
+  }*/
   goback() {
     
     this.navCtrl.push(MisPagosPage);
@@ -92,4 +131,5 @@ export class PagoEfectivoPage {
       }
     });
   }
+  get num_placa() { return this.form.get('num_placa'); }
 }
