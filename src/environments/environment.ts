@@ -16,6 +16,7 @@ export const environment = {
     apiDatosFuncionario: "https://multiserv.cochabamba.bo/api/v1/auth/sem/me-sem",
     apiCloseSession: "https://multiserv.cochabamba.bo/api/v1/auth/sem/logout-sem",
     apiSem: "https://multiserv.cochabamba.bo/api/v1/",
+    apiHabilitarPago: "https://multiserv.cochabamba.bo/api/v1/sem/verificar-cobro-habilitado",
     */
         
     // ** Tania **
