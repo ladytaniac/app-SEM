@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { HomePage } from '../pages/home/home';
 import { MisPagosPage } from '../pages/mis-pagos/mis-pagos';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { MisReportesPage } from '../pages/mis-reportes/mis-reportes';
 import { MisFuncionariosPage } from '../pages/mis-funcionarios/mis-funcionarios';
 import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servicios-engrampador';
@@ -65,17 +66,20 @@ export class MyApp {
       if(this.tipoFuncionario === 'TICKEADOR') {
         this.pages = [
           { title: 'Inicio', component: HomePage, icon: 'home' },
+          { title: 'Cambiar contraseña', component: ChangePasswordPage, icon: 'person' },
           { title: 'Mis ventas', component: MisPagosPage, icon: 'appstore' },
           { title: 'Mis reportes', component: MisReportesPage, icon: 'pie' },
         ];
       } else if (this.tipoFuncionario === 'SUPERVISOR') {
         this.pages = [
           { title: 'Inicio', component: HomePage, icon: 'home' },
+          { title: 'Cambiar contraseña', component: ChangePasswordPage, icon: 'person' },
           { title: 'Mis funcionarios', component: MisFuncionariosPage, icon: 'people' },
         ];
       } else if (this.tipoFuncionario === 'GRAMPERO') {
         this.pages = [
           { title: 'Inicio', component: HomePage, icon: 'home' },
+          { title: 'Cambiar contraseña', component: ChangePasswordPage, icon: 'person' },
           { title: 'Verificar placa', component: ServiciosEngrampadorPage, icon: 'car' },
         ];
       } else {

@@ -29,6 +29,7 @@ import { ReporteFechaPage } from '../pages/mis-reportes/reporte-fecha/reporte-fe
 import { MisParqueosPage } from '../pages/mis-parqueos/mis-parqueos';
 import { MisFuncionariosPage } from '../pages/mis-funcionarios/mis-funcionarios';
 import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servicios-engrampador';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     ReporteFechaPage,
     MisParqueosPage,
     MisFuncionariosPage,
-    ServiciosEngrampadorPage
+    ServiciosEngrampadorPage,
+    ChangePasswordPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { ServiciosEngrampadorPage } from '../pages/servicios-engrampador/servici
     ReporteFechaPage,
     MisParqueosPage,
     MisFuncionariosPage,
-    ServiciosEngrampadorPage
+    ServiciosEngrampadorPage,
+    ChangePasswordPage
   ],
   providers: [
     StatusBar,
