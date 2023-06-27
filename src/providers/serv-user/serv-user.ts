@@ -23,5 +23,7 @@ export class ServUserProvider {
   public logueoUser(data:object):Observable<any>{
     return this.http.post(environment.loginURL,data);
   }
-  
+  public changePassword(data:object):Observable<any>{
+    return this.http.post(environment.apiSem+'sem/cambiar-password', data);
+  }  
 }

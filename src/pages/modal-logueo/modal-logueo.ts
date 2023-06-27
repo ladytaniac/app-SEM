@@ -62,49 +62,41 @@ export class ModalLogueoPage {
         }
         this.srvUser.logueoUser(params).subscribe((data:object)=> {
           console.log('data=', data);
-          var accessToken = data["access_token"];
-          this.httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/json',
-              'Authorization': 'Bearer ' + accessToken
-            })
-          };
-
-          this.httpClient.get(environment.apiDatosFuncionario, this.httpOptions).subscribe(info => {
-            console.log('info=', info);
-            if(info['status'] == true) {
-              if(info['response'].user.tipo === 'PARQUIMETRO') {
-                this.msjSrv.mostrarAlerta('Verificación', 'Usted no puede acceder a la información, porque tiene el rol de PARQUIMETRO.');
-              } else {
-                let infoFunc = {
-                  "access_token": data["access_token"],
-                  "email": this.logueo.mail.valor,
-                  "ci": info['response'].user.dni,
-                  "id_user": info['response'].user.id_responsable,
-                  "nombres": info['response'].user.nombre_completo,
-                  "unidad": info['response'].user.unidad,
-                  "tipo_user": info['response'].user.tipo,
-                  "continuo": data["data_gestion"].continuo,
-                  "puede_cobrar": data["data_user"].puede_cobrar,
-                };
-                this.storage.set('sesion', infoFunc);
-                this.viewCtrl.dismiss();
-              }
-            }
-          });
-        }, (error: HttpErrorResponse) => {
-          if (error.status === 500) {
-            console.log('Error 500');
-            this.msjSrv.mostrarAlerta('Error de acceso', "Correo o contraseña incorrectos");
-          } else {
-            console.log('error=', error);
+          if(data['status'] == false) {
             this.msjSrv.mostrarAlerta('Error de acceso', "Acceso no autorizado");
+          } else {
+            var accessToken = data["access_token"];
+            this.httpOptions = {
+              headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+                'Authorization': 'Bearer ' + accessToken
+              })
+            };
+            this.httpClient.get(environment.apiDatosFuncionario, this.httpOptions).subscribe(info => {
+              console.log('info=', info);
+              if(info['status'] == true) {
+                if(info['response'].user.tipo === 'PARQUIMETRO') {
+                  this.msjSrv.mostrarAlerta('Verificación', 'Usted no puede acceder a la información, porque tiene el rol de PARQUIMETRO.');
+                } else {
+                  let infoFunc = {
+                    "access_token": data["access_token"],
+                    "email": this.logueo.mail.valor,
+                    "ci": info['response'].user.dni,
+                    "id_user": info['response'].user.id_responsable,
+                    "nombres": info['response'].user.nombre_completo,
+                    "unidad": info['response'].user.unidad,
+                    "tipo_user": info['response'].user.tipo,
+                    "continuo": data["data_gestion"].continuo,
+                    "puede_cobrar": data["data_user"].puede_cobrar,
+                  };
+                  this.storage.set('sesion', infoFunc);
+                  this.viewCtrl.dismiss();
+                }
+              } else {
+                this.msjSrv.mostrarAlerta('Verificación', 'El correo o la contraseña son incorrectos.');
+              }
+            });
           }
-          /*
-          if (!error.error.success) {
-            console.log(error.error.data);
-            this.msjSrv.mostrarAlerta(error.error.data, "Correo o contraseña incorrectos");
-          } */
         });
       }
     }

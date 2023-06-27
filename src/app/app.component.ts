@@ -134,6 +134,12 @@ export class MyApp {
               this.iniLogin = false;
               this.global.sesion= {};
               this.nav.setRoot(this.rootPage);
+            }, error => {
+              console.log('error=', error);
+              console.log('errorr=', error.error);
+              this.iniLogin = false;
+              this.global.sesion= {};
+              this.nav.setRoot(this.rootPage);
             });
           }
         }        
